@@ -1,31 +1,51 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+owner: Mdelacruzmelo
+repo: status
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  - name: Arqland (web pública)
+    url: https://arqland.com
+    # Dos intentos antes de dar por caída: un blip de red no es una caída, y
+    # una incidencia falsa enseña a ignorar las incidencias.
+    maxRetries: 2
+    tags: [arqland]
+  - name: Arqland (panel de admin)
+    url: https://admin.arqland.com
+    maxRetries: 2
+    tags: [arqland]
+  - name: Arqland API
+    url: https://arqland-api-jb7bmyjd6a-uc.a.run.app/api/health
+    maxRetries: 2
+    # La API respondería 200 con el cuerpo vacío si algo fuera mal en la
+    # aplicación pero no en el contenedor: se comprueba también el contenido.
+    tags: [arqland]
+    __dangerous__body_down_if_text_missing: '"status":"ok"'
+
+  # Pendientes de URL — descomentar y rellenar:
+  # - name: Finance
+  #   url: https://???
+  #   maxRetries: 2
+  #   tags: [finance]
+  # - name: mdelacruzmelo.com
+  #   url: https://???
+  #   maxRetries: 2
+  #   tags: [personal]
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  # Sin dominio propio: la página vive en
+  # https://mdelacruzmelo.github.io/status
+  # Para usar un dominio propio, borra baseUrl, añade `cname: <dominio>` y
+  # crea en Cloudflare un CNAME → mdelacruzmelo.github.io en "DNS only".
+  baseUrl: /status
+  name: Estado de mis servicios
+  introTitle: "Estado de los servicios de **Mario de la Cruz**"
+  introMessage: >-
+    Comprobación automática cada 5 minutos, sin servidor: la hace GitHub
+    Actions y el histórico vive en este repositorio. Cada caída abre una
+    incidencia en
+    [GitHub](https://github.com/Mdelacruzmelo/status/issues) y se cierra
+    sola cuando el servicio vuelve.
   navbar:
-    - title: Status
+    - title: Estado
       href: /
     - title: GitHub
-      href: https://github.com/$OWNER/$REPO
-
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+      href: https://github.com/Mdelacruzmelo
