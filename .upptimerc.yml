@@ -13,7 +13,11 @@ sites:
     maxRetries: 2
     tags: [arqland]
   - name: Arqland API
-    url: https://arqland-api-jb7bmyjd6a-uc.a.run.app/api/health
+    # Antes en *.run.app: cambiado a api.arqland.com el día que el dominio
+    # quedó en verde. Comprobar por aquí es mejor prueba que un curl manual —
+    # ejercita el mismo camino (DNS + certificado + Cloud Run) que usan de
+    # verdad los navegadores de arqland.com y admin.arqland.com.
+    url: https://api.arqland.com/api/health
     maxRetries: 2
     # La API respondería 200 con el cuerpo vacío si algo fuera mal en la
     # aplicación pero no en el contenedor: se comprueba también el contenido.
