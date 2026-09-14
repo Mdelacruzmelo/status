@@ -1,7 +1,7 @@
-url: https://arqland-api-jb7bmyjd6a-uc.a.run.app/api/health
+url: https://api.arqland.com/api/health
 status: up
 code: 200
-responseTime: 99
-lastUpdated: 2026-09-13T00:40:29.402Z
+responseTime: 200
+lastUpdated: 2026-09-14T00:49:37.691Z
 startTime: 2026-09-12T22:13:47.962Z
 generator: Upptime <https://github.com/upptime/upptime>
